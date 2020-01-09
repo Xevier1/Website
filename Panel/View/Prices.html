@@ -1,0 +1,288 @@
+
+<style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown a:hover {background-color: #ddd;}
+        .show {display: block;}
+</style>
+
+<div class="window-container">
+
+    <div class="overlay">
+        <div class="overlay-content">
+            <div class="prices-purchase-overlay animated fadeInTop">
+                <div style="padding: 10px 0; padding-bottom: 10px; border-bottom: 1px solid #dedede;">
+                    <div style="text-align: left; padding: 0 15px;">
+                        <label style="color: gray;vertical-align: top;display: inline; font-size: 20px;">Purchase</label>
+                        <i onclick="pricesOverlayOff();" class="material-icons" style="color: gray;font-size: 20px;cursor: pointer;vertical-align: middle;float: right; margin-top: 3px;">close</i>
+                    </div>
+                </div>
+                <div style="padding: 15px; text-align: left; color: #4e4e4e;">
+
+                    <table style="font-family:'Roboto',sans-serif; width: 100%; margin-bottom: 40px; border-collapse: collapse; border-spacing: 0;">
+                        <tr>
+                            <th style="padding-bottom: 4px;">Product</th>
+                            <th>Price</th>
+                            <th>Duration</th>
+                        </tr>
+                        <tr style="font-size: 14px;">
+                            <td style="padding-bottom: 4px;" id="prices-overlay-name" width="40%"></td>
+                            <td id="prices-overlay-price" width="20%"></td>
+                            <td width="40%">
+                                <div>
+                                    <select name="timeId" id="timeId" onchange="calculateDisplayPrice();">
+                                        <option value="0" selected="selected">1 Month</option>
+                                        <option value="1">3 Months (10% discount)</option>
+                                        <option value="2">6 Months (20% discount)</option>
+                                        <option value="3">12 Months (30% discount)</option>
+                                        <option id="lifetime-option-dropdown" value="4">Lifetime</option>
+                                    </select>
+                                    <br/>
+                                    <label id="prices-overlay-date"></label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="font-size: 12px;visibility: collapse;" id="prices-upgrade">
+                            <td style="padding-bottom: 4px;">Current License</td>
+                            <td id="prices-upgrade-deduction"></td>
+                            <td></td>
+                        </tr>
+                        <tr style="font-size: 14px;">
+                            <td style="border-top: 1px solid #dedede;"></td>
+                            <td style="text-align: right;
+                            color: #4e4e4e;
+                            font-family: 'Roboto',sans-serif;
+                            font-weight: bold;
+                            padding-right: 8px;
+                            padding-top: 10px;
+                            border-top: 1px solid #dedede;
+                            border-collapse: collapse;
+                            border-spacing: 0;">Total:</td>
+                            <td id="total-price-display" style="color: #4e4e4e;
+                            font-family: 'Roboto',sans-serif;
+                            font-weight: bold;
+                            padding-top: 10px;
+                            border-top: 1px solid #dedede;
+                            border-collapse: collapse;
+                            border-spacing: 0;"> 
+                                $6
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="rdo-1" class="btn-radio" id="subscription-option" onclick="setDate()">
+                                    <input type="radio" id="rdo-1" value="subscription" name="sub-type-group" checked="checked">
+                                    <svg width="15px" height="15px" viewBox="0 0 20 20">
+                                      <circle cx="10" cy="10" r="9"></circle>
+                                      <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                                      <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                                    </svg>
+                                    <span class="sub-type-text">Subscription</span>
+                                  </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="rdo-2" class="btn-radio" id="one-time-option" onclick="setDate()">
+                                    <input type="radio" id="rdo-2" value="onetime" name="sub-type-group">
+                                    <svg width="15px" height="15px" viewBox="0 0 20 20">
+                                      <circle cx="10" cy="10" r="9"></circle>
+                                      <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                                      <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                                    </svg>
+                                    <span class="sub-type-text">One-Time Payment</span>
+                                  </label>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <label><input id="tos-checkbox" type="checkbox" onchange="$('#price-error').text('');"> I have read and I agree to the <a target="_blank" href="https://thealtening.com/help/terms#termsofservice">Terms of Service</a> and <a target="_blank" href="https://thealtening.com/help/terms#privacypolicy">Privacy Policy</a></label><br/>
+                    <span id="price-error" style="color: red; margin-left: 23px; font-size: 14px;"></span>
+                    
+                    <div style="margin-top: 10px;">
+                        <button onclick="executePurchase();" class="button-basic" id="prices-button-purchase"><i id="purchase-button-spinner" class="fa fa-spinner fa-pulse fa-3x fa-fw" style="font-size: 10px; vertical-align: middle; display: none;"></i>  Buy with PayPal</button>
+                        <div class="dropdown">
+                            <button onclick="toggleCryptoDropdown();" style="margin-left: 2px; width: 6%; min-width: 36px;" class="button-basic dropbtn" id="prices-button-purchase"><i id="purchase-crypto-button-spinner" class="fa fa-spinner fa-pulse fa-3x fa-fw" style="font-size: 10px; vertical-align: middle; display: none;"></i>  <i class="fab fa-btc dropbtn"></i></button>
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="javascript:void(0)" onclick="executePurchaseCrypto('BTC');">Bitcoin</a>
+                                <a href="javascript:void(0)" onclick="executePurchaseCrypto('BCH');">Bitcoin Cash</a>
+                                <a href="javascript:void(0)" onclick="executePurchaseCrypto('ETH');">Ethereum</a>
+                            </div>
+                        </div>
+                        <button onclick="pricesOverlayOff();" class="button-basic" id="prices-button-cancel">Cancel</button>
+
+                        <input id="coupon-input" type="text" style=" float: right; height: 24px;margin-left: 5px; padding: 3px;" size="8" placeholder="Coupon..." />
+                        <button onclick="applyCoupon();" class="button-basic" id="prices-button-coupon" style="float: right; box-shadow: none; width: 20%; min-width: 116px; margin-left: 20px; font-size: 12px; padding: 10px 14px 10px 14px; background-color: #ecebeb; color: #8e8e8e;"><i id="coupon-button-spinner" class="fa fa-spinner fa-pulse fa-3x fa-fw" style="font-size: 10px; vertical-align: middle; color: #8e8e8e; display: none;"></i> Apply Coupon</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="prices-container" style="margin-top: 10vh;">
+
+        <div id="window-prices-plan-1">
+            <div style="padding: 20px;">
+
+                <div style="margin-bottom: 10px;">
+                    <div><label style="font-size: 39px;color: white;">Starter</label></div>
+                    <div style="margin-top: -8px; margin-left: 3px;"><label style="font-size: 14px;">An introduction package at a cheaper price</label></div>
+                </div>
+
+                <label style="color: white;text-align: left;">
+                    <span class="price-text" style="vertical-align: top;font-size: 14px;color: #4db956;margin-right: -4px;">$</span>
+                    <span class="price-text" style="font-size: 34px;color: white;">3<span class="price-text" style="font-size: 16px;color: #e2e2e2;margin-right: 1px;">.36</span>
+                    </span>
+                    <span class="price-text" style="color: #91979a;margin-left: -5px;font-size: 14px;">/Month</span>
+                </label>
+
+                <ul>
+                    <li>25 alt limit per day / 750 alts per month</li>
+                    <li>8 Account History</li>
+                    <!--<li><div class="hint  hint--right" data-hint="Automatically checks and displays accounts with ranks on popular servers (Hypixel, Mineplex...).">Rank and Level Checker*</div></li>-->
+                    <li><div class="hint  hint--right" data-hint="This is a convenient feature that helps you log into accounts quickly and securely!">Alt Loader *</div></li>
+                    <li><div class="hint  hint--right" data-hint="Each account is checked before being generated.">Account Checker *</div></li>
+                    <li>Copy Button</li>
+                    <li><div class="hint  hint--right" data-hint="This plan does not support minebot integration. This plan does not support the API.">No API/MineBot *</div></li>
+                    <li>24/7 Support</li>
+                    <li>"Starter" Discord Rank</li>
+                </ul>
+
+                <button onclick="pricesOverlayOn('Starter', 2, 3.36, 30);" class="button-basic" style="width: 40%; min-width: 116px; margin-left: 20px">BUY</button>
+            </div>
+        </div>
+
+        <div id="window-prices-plan-1">
+            <div style="padding: 20px;">
+
+                <div style="margin-bottom: 10px;">
+                    <div><label style="font-size: 39px;color: white;">Basic</label></div>
+                    <div style="margin-top: -8px; margin-left: 3px;"><label style="font-size: 14px;">The basic features at a cheap price</label></div>
+                </div>
+
+                <label style="color: white;text-align: left;">
+                    <span class="price-text" style="vertical-align: top;font-size: 14px;color: #4db956;margin-right: -4px;">$</span>
+                    <span class="price-text" style="font-size: 34px;color: white;">6</span>
+                    <span class="price-text" style="color: #91979a;margin-left: -5px;font-size: 14px;">/Month</span>
+                </label>
+
+                <ul>
+                    <li>80,000 Unique Accounts Per Month</li>
+                    <li>8 Account History</li>
+                    <li><div class="hint  hint--right" data-hint="Automatically checks and displays accounts with ranks on popular servers (Hypixel, Mineplex...).">Rank and Level Checker*</div></li>
+                    <li>Generate Alts From Discord <span class="new-badge">NEW</span></li>
+                    <li><div class="hint  hint--right" data-hint="This is a convenient feature that helps you log into accounts quickly and securely!">Alt Loader * <span class="new-badge">NEW</span></div></li>
+                    <li><div class="hint  hint--right" data-hint="Each account is checked before being generated.">Account Checker *</div></li>
+                    <li>Copy Button</li>
+                    <li><div class="hint  hint--right" data-hint="This is an API Generation limit only, you can still generate unlimited accounts on the website 🤗.">150 API Limit *</div></li>
+                    <li>24/7 Support</li>
+                    <li>"Basic" Discord Rank</li>
+                </ul>
+
+                <button onclick="pricesOverlayOn('Basic', 0, 6, 30);" class="button-basic" style="width: 40%; min-width: 116px; margin-left: 20px">BUY</button>
+            </div>
+        </div>
+
+        <div id="window-prices-plan-2">
+            <div class="ribbon"><span>POPULAR</span></div>
+            <div style="padding: 20px;">
+
+                <div style="margin-bottom: 10px;">
+                    <div><label style="font-size: 39px;color: white;">Premium</label></div>
+                    <div style="margin-top: -8px; margin-left: 3px;"><label style="font-size: 14px;">Premium features at a great price</label></div>
+                </div>
+
+                <label style="color: white;text-align: left;">
+                    <span class="price-text" style="vertical-align: top;font-size: 14px;color: #4db956;margin-right: -4px;">$</span>
+                    <span class="price-text" style="font-size: 34px;color: white;">12</span>
+                    <span class="price-text" style="color: #91979a;margin-left: -5px;font-size: 14px;">/Month</span>
+                </label>
+
+                <ul>
+                    <li><strong>160,000 Unique Accounts Per Month</strong></li>
+                    <li><strong>12 Account History </strong></li>
+                    <li><strong>Ban Checker <span class="new-badge">NEW</span></strong></li>
+                    <li><strong>Premium Database</strong></li>
+                    <li><strong>10 Private Accounts</strong></li>
+                    <li><strong>10 Favorite Accounts</strong></li>
+                    <li><div class="hint  hint--right" data-hint="Shows if an account has a cape when it's generated. (Mojang, Optifine, LabyMod, 5Zig)"><strong>Cape Checker *</strong></div></li>
+                    <li><div class="hint  hint--right" data-hint="This is an API Generation limit only, you can still generate unlimited accounts on the website 🤗."><strong>250 API Limit *</strong></div></li>
+                    <li><strong>Priority Support</strong></li>
+
+                    <li><div class="hint  hint--right" data-hint="Automatically checks and displays accounts with ranks on popular servers (Hypixel, Mineplex...).">Rank and Level Checker*</div></li>
+                    <li>Generate Alts From Discord <span class="new-badge">NEW</span></li>
+                    <li><div class="hint  hint--right" data-hint="This is a convenient feature that helps you log into accounts quickly and securely!">Alt Loader * <span class="new-badge">NEW</span></div></li>
+                    <li><div class="hint  hint--right" data-hint="Each account is checked before being generated.">Account Checker *</div></li>
+                    <li>Copy Button</li>
+                    <li>24/7 Support</li>
+                    <li>"Basic" Discord Rank</li>
+                    <li><strong>"Premium" Discord Rank</strong></li>
+                </ul>
+
+                <button onclick="pricesOverlayOn('Premium', 1, 12, 30);" class="button-basic" style="width: 40%; min-width: 116px; margin-left: 20px">BUY</button>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 15vh;">
+        
+        <div class="prices-faq-item" onclick="this.children[1].style.height = this.children[1].style.height == '' ? '39px' : null;">
+            <h2>What does API/No API mean?</h2>
+            <p style="height: 39px;">These keywords in our packages decide whether or not you can access or use applications that use our API. Basically, if you do not have API support in your package then the applications that implement our API will not be able to automatically generate tokens for you. For OQMineBot this means that you will have no functionality, and you will need basic or premium to use TheAltening with that application.</p>
+        </div>
+
+        <div class="prices-faq-item" >
+            <h2>What operating systems does TheAltening support?</h2>
+            <p style="height: 39px;">Currently we only support Windows OS's.</p>
+        </div>
+
+        <div class="prices-faq-item" >
+            <h2>Why should i choose TheAltening over xxx site?</h2>
+            <p style="height: 39px;">TheAltening is the #1 choice for massive amounts of alts at an incredibly good value. We boast 24/7 support combined with effective technological solutions!</p>
+        </div>
+
+        <div class="prices-faq-item">
+            <h2>How do i use TheAltening?</h2>
+            <p style="height: 39px;">If you are not using an API enabled application (these make it much easier to use)
+            You can follow <a href="https://www.youtube.com/watch?v=nXmWfXeaark" target="_blank">our tutorial for the authenticator</a>.</p>
+        </div>
+        
+        <div class="prices-faq-item" onclick="this.children[1].style.height = this.children[1].style.height == '' ? '39px' : null;">
+            <h2>What are Privates and Favorites?</h2>
+            <p style="height: 39px;">with the Premium package you get both 10 privates and 10 favorites, here is a description of what they are: <br/>
+                Private: this an account that you can choose to make just yours, nobody else will have access to this account and you can add/remove these as often as you want<br/>
+                Favorite: This is an account that will be "bookmarked" in our system, it will not be exclusive like a privated account however you will not lose access to it.</p>
+        </div>
+        
+        <div class="prices-faq-item" onclick="this.children[1].style.height = this.children[1].style.height == '' ? '39px' : null;">
+            <h2>What is the API Limit?</h2>
+            <p style="height: 39px;">The API limit is a daily limit for the amount of accounts that can be generated via API-enabled applications. If you are generating accounts from our website then you do not need to worry about this. </p>
+        </div>
+        
+        <div class="prices-faq-item" onclick="this.children[1].style.height = this.children[1].style.height == '' ? '39px' : null;">
+            <h2>What is the "Premium Database"?</h2>
+            <p style="height: 39px;">The premium database is an exclusive pool of high quality alts that are only accessible to premium-tier users. Basic and starters users do not get access to this database, making it very fresh.</p>
+        </div>
+        
+
+    </div>
+</div>
+
+<script>socialProofExec();</script>

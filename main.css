@@ -1,0 +1,198 @@
+/* Landing: background */
+#landing-showcase {
+    background: url(/Images/bg-lq.png);
+
+    height: 100vh;
+    border-bottom: 2px solid #2DB194;
+}
+
+#landing-title-body {
+    padding-left: 10%;
+    padding-top: 20%;
+    float: left;
+}
+#lading-video-body {
+    float: right;
+    padding-top: calc(20% - (315px/2));
+    padding-right: 10%;
+}
+#landing-hint {
+    margin: auto;
+    text-align: center;
+    margin-top: 95vh;
+    width: 100%;
+    position: absolute;
+}
+#landing-hint i {
+    cursor: pointer;
+    font-size: 30px;
+}
+
+/* Landing: features */
+#landing-features-body {
+    padding-top: 5vh;
+    width: 100%;
+    text-align: center;
+}
+#landing-features-title {
+    margin: auto;
+}
+.landing-feature-body {
+    width: 300px;
+    display: inline-block;
+    margin: 0 20px 20px 20px;
+    font-size: 13px;
+    vertical-align: top;
+}
+
+/* Landing: about */
+#landing-about-body {
+    padding-top: 5vh;
+    width: 100%;
+    text-align: center;
+}
+#landing-about-title {
+    margin: auto;
+}
+.landing-about-body {
+    width: 900px;
+    margin: auto;
+    font-size: 13px;
+    vertical-align: top;
+    line-height: 18px;
+    font-size: 13px;
+    text-align: left;
+}
+.landing-about-header {
+    font-size: 16px; 
+    color: white;
+    margin-bottom: 6px;
+    margin-top: 16px;
+}
+.landing-about-post {
+    margin-top:20px;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+/* Landing: FAQ */
+#landing-faq-body {
+    padding-top: 10vh;
+    width: 100%;
+}
+#landing-faq-title {
+    margin: auto;
+    text-align: center;
+}
+.landing-faq-item {
+    width: 400px;
+    margin-bottom: 50px;
+    display: inline-block;
+    vertical-align: top;
+}
+.landing-faq-item-text {
+    font-size: 13px;
+}
+
+/* Landing: footer */
+#lading-footer-body {
+    height: 150px;
+    width: 100%;
+}
+#lading-footer-body .footer-title {
+    font-size: 14px;
+    color: #fff;
+}
+#lading-footer-body a {
+    margin-right: 5px;
+    font-size: 13px;
+}
+.landing-footer-holder {
+    margin-top: 10vh;
+    vertical-align: top;
+}
+.landing-footer-contact {
+    color: #91979a;
+    font-size: 13px;
+}
+
+.faq-item-box {
+    margin: auto; 
+    width: 980px;
+}
+.faq-item-push-right {
+    margin-right: 175px;
+}
+
+.landing-footer-float-left {
+    float: left;
+}
+.landing-footer-float-right {
+    float: right;
+}
+
+
+@media (max-width:1200px)  { 
+    #landing-showcase {
+        text-align: center;
+        height: 600px;
+    }
+    #landing-title-body {
+        width: 100%;
+        padding-left: 0;
+        padding-top: 10%;
+        float: none;
+    }
+    #lading-video-body {
+        float: none;
+        padding-top: 5%;
+        padding-right: 0;
+    }
+    #landing-hint {
+        visibility: collapse;
+    }
+
+    .landing-about-body {
+        width: auto;
+    }
+
+    #landing-faq-body {
+        text-align: center;
+    }
+    .faq-item-box {
+        margin: auto;
+        width: auto;
+    }
+    .faq-item-push-right {
+        margin-right: 0;
+    }
+
+    #lading-footer-body {
+        margin: 0 10%;
+        width: 80%;
+    }
+    .landing-footer-holder {
+        width: 100%;
+    }
+    .landing-footer-float-left {
+        float: none;
+    }
+    .landing-footer-float-right {
+        float: none;
+    }
+
+    #landing-about-body-child-container {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    #video-trailer {
+        width: 50%;
+    }
+}
+
+@media (max-width:700px)  { 
+    #video-trailer {
+        width: 80%;
+    }
+}

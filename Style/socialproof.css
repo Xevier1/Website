@@ -1,0 +1,54 @@
+.social-proof-container {
+    position: fixed; 
+    bottom: 10px; 
+    right: 10px; 
+}
+
+#social-proof-shadow {
+    box-shadow: rgba(0, 0, 0, 0.1) 0 0 10px;
+}
+
+#social-proof-render {
+    max-width: 280px; 
+    min-width: 280px;
+    background: #252525;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 3px 5px;
+    line-height: 20px;
+
+    padding: 10px 40px 10px 0px;
+    border: solid 1px #151414;
+}
+
+#social-proof-render:hover {
+    cursor: pointer;
+    border: solid 1px #2DB194;
+}
+
+#social-proof-render p {
+    font-size:16px;
+    color:#ffffff;
+    font-family: 'Karla', sans-serif;
+    margin: 0;
+}
+#social-proof-render span {
+    font-family: 'Karla', sans-serif;
+    font-size:18px;
+    color: #2DB194;
+    font-weight: bold;
+    background: #303030;
+    padding: 2px;
+    border-radius: 2px;
+}
+
+#social-proof-logo-container {
+    width: 30%;
+    text-align: center;
+}
+#social-proof-logo-container i {
+    font-size: 40px;
+    color: #2DB194;
+}
+#social-proof-text-container {
+    width: 70%;
+}

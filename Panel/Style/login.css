@@ -1,0 +1,109 @@
+#wrapper {
+    background: url(/Images/bg-lq.png);
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+}
+
+#main-window {
+
+    height: 490px;
+    width: 450px;
+    padding: 20px;
+    padding-top: 40px;
+
+    background-color: #31313136;
+
+    border-radius: 4px;
+    box-shadow: 0 0 8px 2px #0000007d;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#auth-form {
+    width: 70%;
+    height: 70%;
+
+    margin: auto;
+}
+
+/* Title: */
+#title-dispay {
+    margin-bottom: 40px;
+    text-align: center;
+}
+#title-holder {
+    display: inline-block; 
+    vertical-align: top;
+    
+    padding-top: 4px;
+    font-size: 26px;
+    padding-bottom: 4px;
+}
+#title-pre {
+    color: #fff;
+}
+#title-post {
+    color: #2DB194;
+}
+
+.square-textbox {
+    
+    /* box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.75); */
+    
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 2px solid rgb(53, 194, 163);
+
+    color: #fff;
+    font-size: 15px;
+
+    outline: none;
+    padding: 10px 8px 10px 8px;
+
+    height: 18px;
+    font-family: 'Karla', sans-serif;
+    cursor: pointer;
+
+    width: calc(100% - 20px);
+}
+.square-textbox:hover {
+    border: 2px solid rgb(57, 199, 168);
+}
+
+
+.square-button {
+    background-color: #2DB194;
+    box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.5);
+    
+    border: 0;
+    outline: none;
+
+    padding: 14px 20px 14px 20px;
+    text-align: left;
+    
+    cursor: pointer;
+
+    width: 100%;
+
+    text-align: center;
+    font-family: 'Karla', sans-serif;
+    font-weight: bold;
+    color: #fff;
+}
+
+#other {
+    font-size: 12px;
+}
+#recover {
+    float:right;
+    margin-top: 3.5px;
+    font-size: 12px;
+}
+#back {
+    clear: both;
+    font-size: 12px;
+}

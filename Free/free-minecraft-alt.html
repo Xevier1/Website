@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Altening - Free Mincraft Alt</title>
+    <meta name="theme-color" content="#2DB194"/>
+    <link rel="canonical" href="https://thealtening.com">
+    <meta name="description" content="The Altening is the best source for free minecraft accounts. We empower the community with access to free alts. Our databases are updated regularly to provide only high quality alts.">
+    <link rel="publisher" href="https://plus.google.com/101664811383355598881">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/Free/free.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
+
+    <link href="/Style/animations/animate.css" rel="stylesheet">
+    <link href="/Panel/Style/main.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="./Javascript/Generate.js"></script>
+    <script src="https://thealtening.com/Javascript/clipboard.js"></script>
+
+    <link href="https://thealtening.com/Style/alertify.css" rel="stylesheet">
+    <script src="https://thealtening.com/Javascript/alertify.js"></script>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://thealtening.com/Style/socialproof.css" />
+    <script src="https://thealtening.com/Javascript/socialproof.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124251250-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-834320227"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-124251250-1');
+        gtag('config', 'AW-834320227');
+    </script>
+</head>
+<body onload="Generate();">
+
+    <div id="limit-overlay" style="display: none;">
+        <div class="animated slideInDown" style="color: black;width: 30%;margin: auto;margin-top: 10%;background: white;padding: 20px;border-radius: 5px;">
+            <h2 style="margin: 5px 0; color: #303030;">Daily Limit Reached!</h2>
+            <div style="font-size: 13px; color: #404040;">
+                <div><span>You've currently reached the limits of this free generator, If you're interested in more alts please be sure to check out our premium plans which include <b>160,000 alts per month</b> and accounts that <b>do not expire in 15 minutes</b>. The limit resets every day. </span><br></div>
+                <div style="margin-top: 10px;"><span>If you'd like to <b>remove the limit</b> and get <b>higher quality accounts</b>, with a ton more featuers, you can check out <a style="color: #2DB194;" href="https://panel.thealtening.com/#prices">premium altening page</a>.</span></div>
+            </div>
+            <div style="margin-top: 20px; font-size: 12px; color: black;">
+                <a href="https://thealtening.com" style="color: #2DB194;">Powered by TheAltening.com</a> | <a href="https://panel.thealtening.com/#prices" style="color: #2DB194;">Premium</a> | <a style="color: #2DB194;" href="https://panel.thealtening.com/">Dashboard</a> | <a style="color: #2DB194;" href="https://thealtening.com/help/">Help</a>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <a href="https://discord.gg/XGFyFVG" target="_blank"><img src="/Images/discord-logo-white.svg" width="64px" class="disc animated fadeInUp"/></a>
+    </div>
+
+    <div style="text-align: center; margin-top: 5%;">
+        <div class="animated fadeInDown slow">
+            <a href="https://thealtening.com"><img src="https://i.imgur.com/iCi1Kki.png" width="100px" alt="TheAltening Logo"></a>
+            <div style="margin-top: 10px;">
+                <span style="color: white; font-size: 24px;">Powered by <span style="color: #2DB194;">TheAltening</span></span>
+            </div>
+        </div>
+
+        <div id="gen-panel" style="text-align: center; margin-top: 4%;">
+                <div class="animated fadeInLeft slow" id="generator-window">
+                    <div class="window-title">
+                        <h2 style="margin: 0; color: white; display: inline-block;">Free Account</h2>
+                        <div style="float: right; text-align: right; margin-right: 12px;">
+                                <span id="expires-in" style="color: #848484; font-size: 12px; vertical-align: bottom;">Expires in 15 minutes</span>
+                        </div>
+                    </div>
+                    <div class="window-body">
+        
+                        <div>
+                            <div style="width: 100%;">
+                                <div style="margin-bottom: 4px;">
+                                    <span class="body-text">Username:</span>
+                                </div>
+                                <div>
+                                    <input id="generator_username" onclick="this.select()" readonly style="width: calc(100% - 86px - 16px - 4px);" type="text" class="square-textbox copy-textbox" placeholder="..." />
+                                    <button id="copy-username-label" onclick="generatorCopyTokenDetails('name', this.id);" class="copy-button">Copy</button>
+                                </div>
+                            </div>
+        
+                            <div style="width: 100%; margin-top: 20px;">
+                                <div style="margin-bottom: 4px;">
+                                    <span class="body-text">Token:</span>
+                                </div>
+                                <div>
+                                    <input id="generator_token" onclick="this.select()" readonly style="width: calc(100% - 86px - 16px - 4px);" type="text" class="square-textbox copy-textbox" placeholder="..." />
+                                    <button id="copy-token-label" onclick="generatorCopyTokenDetails('token', this.id);" class="copy-button">Copy</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px">
+                            <span style="color: #848484; font-size: 12px;">You will need the <a href="https://github.com/TheAltening/Authenticator/releases/download/2.0.0/TheAltening.zip" target="_blank">Authenticator</a> to use the token. Don't know how to use the token or the authenticator? <a href="https://youtu.be/ohi2lA7P6E0" target="_blank">Click here</a> to find out.</span>
+                        </div>
+
+                    </div>
+                </div>
+        
+                <div class="animated fadeInRight slow" id="alt-data-window">
+                    <div class="window-title" style="text-align: center;">
+                        <h2 style="margin: 0; color: white;">Account information</h2>
+                    </div>
+                    <div class="window-body">
+                        <!-- Base details -->
+                        <div>        
+                            <img class="img-shadow" id="generator-display-body" src="" height="137px"/><br>
+                            <div style="margin-top: 24px; margin-bottom: 10px;">
+                                <span style="color: white; margin-top: 5px;" id="generator_display_username"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div id="err-panel" style="margin: auto; width: 40%; margin-bottom: 5%; margin-top: 5%; display: none;" class="animated fadeInDown slow">
+            <h3 style="color: white; font-size: 20px; margin: 0px; margin-bottom: 10px;">An Error Has Occured!</h3>    
+            <span id="error-text" style="color: #c35b1b;">No additional data is available.</span> <br/>
+            <span style="color: #74787b; font-size: 12px">(Please try again later. If the error keeps persisting then contact the support team through intercom)</span>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <button style="margin: 0; margin-left: -10px; padding: 11px 30px;" class="button-primary animated fadeInLeft slow" onclick="Generate();">Generate Another Alt</button>
+            <a style="margin: 0px;" class="animated fadeInRight slow" href="https://panel.thealtening.com/#prices" target="_blank"><button style="margin-left: 0px;" class="button-secondary">Premium</button></a>
+        </div>
+
+        <div class="animated fadeInUp slow" style="color: #848484; width: 40%; font-size: 12px; margin: auto; margin-top: 10px;">
+            <span>Is the account banned on your favorite server? Try generating another one or check out the <a href="https://panel.thealtening.com/#prices" target="_blank">premium generator</a>, which includes such features as Favoriting Alts, Privating Alts, Alt History, Rank and Level checking, and Premium Alt Database.</span>
+        </div>
+
+    </div>
+
+    <script>socialProofExec();</script>
+</body>
+</html>

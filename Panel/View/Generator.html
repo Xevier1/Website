@@ -1,0 +1,364 @@
+<div class="window-container">
+
+    <div>
+        <div id="generator-window">
+            <div class="window-title">
+                <h2>Generate</h2>
+            </div>
+            <div class="window-body">
+
+                <div>
+                    <div style="width: 100%;">
+                        <div style="margin-bottom: 4px;">
+                            <span class="body-text">Username:</span>
+                        </div>
+                        <div>
+                            <input id="generator_username" onclick="this.select()" readonly style="width: calc(100% - 86px - 16px - 4px);" type="text" class="square-textbox copy-textbox" placeholder="..." />
+                            <button id="copy-username-label" onclick="generatorCopyTokenDetails('name', this.id);" class="copy-button">Copy</button>
+                        </div>
+                    </div>
+
+                    <div style="width: 100%; margin-top: 20px;">
+                        <div style="margin-bottom: 4px;">
+                            <span class="body-text">Token:</span>
+                        </div>
+                        <div>
+                            <input id="generator_token" onclick="this.select()" readonly style="width: calc(100% - 86px - 16px - 4px);" type="text" class="square-textbox copy-textbox" placeholder="..." />
+                            <button id="copy-token-label" onclick="generatorCopyTokenDetails('token', this.id);" class="copy-button">Copy</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div id="captcha-parent">
+                    </div>
+                    <div style="height: 80px; overflow: hidden;" >
+                        <button onclick="doGenerate();" class="square-button" style="width: 200px; margin-top: 20px;">
+                            <div class="square-text">
+                                <label>Generate</label><br>
+                                <span>1x alt token</span>
+                            </div>
+                            <div class="square-logo">
+                                <span><i class="material-icons">done_all</i></span>
+                            </div>
+                        </button>
+
+                        <button id="launch-alt" onclick="loadAlt();" class="square-button" style="width: 150px; margin-left: 10px;">
+                            <div class="square-text">
+                                <label id="copy-all-label">Launch Alt</label><br>
+                                <span>Quick Login</span>
+                            </div>
+                            <div class="square-logo">
+                                <span><i class="material-icons">open_in_new</i></span>
+                            </div>
+                        </button>
+                        
+                        <div style="display: none; margin-left: 90px; margin-top: 27px;" id="launch-alt-loader" class="circle-loader">
+                            <div class="checkmark error"></div>
+                        </div>
+
+                        <div id="alt-expires-container" style="display: none; margin-left: 10px;">
+                            <span style="font-size: 14px;">Expires</span><br>
+                            <span style="font-size: 12px;" id="alt-expires-timer-text">in 1 Day</span>
+                        </div>
+                        <div id="alt-expired-container" style="display: none; margin-left: 10px;">
+                            <span style="font-size: 14px;">Expired</span><br>
+                            <span style="font-size: 12px; text-decoration: underline; cursor: pointer;" onclick="onRenewClicked()">renew</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="alt-data-window">
+            <div class="window-title" style="text-align: center;">
+                <h2>Account information</h2>
+            </div>
+            <div class="window-body">
+                <!-- Base details -->
+                <div>        
+                    <img class="img-shadow" id="generator-display-body" src="" height="137px"/><br>
+                    <span id="generator_display_username"></span>
+                </div>
+                <!-- Additional info: cape, bans -->
+                <div id="details-button-holder" style="margin-top: 20px; display: none;">
+                    <div>
+                        <table style="margin: auto; text-align: left;">
+                            <tr>
+                                <td>
+                                    <span id="details-fav-button" class="details-fav unselectable" style="margin-right: 10px;">
+                                        <i class="material-icons details-button-icon">favorite</i>
+                                        Favorite
+                                    </span>
+                                </td>
+                                <td>
+                                    <span id="details-priv-button" class="details-priv unselectable" style="margin-left: 10px;">
+                                        <i class="material-icons details-button-icon">lock</i>
+                                        Private
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="bans-display-text">
+                                    <span class="details-fav unselectable" style="margin-right: 10px;">
+                                        <i class="material-icons details-button-icon">perm_contact_calendar</i>
+                                        <strong id="bans-display-text-text">Bans</strong>
+                                        <strong id="bans-display-text-attention" style="color: black;background-color: rgb(189, 52, 52);padding: 0px 6px;border-radius: 3px;font-size: 13px;font-family: Karla;margin-left: 3px;display: inline; display: none;">0</strong>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span id="cape-display-button" class="details-priv unselectable" style="margin-left: 10px;">
+                                        <i class="material-icons details-button-icon">bookmark</i>
+                                        <strong id="cape-display-text">Info</strong>
+                                        <strong id="cape-display-text-attention" style="color: white; background-color: rgb(45, 177, 148); padding: 0px 6px; border-radius: 3px; font-size: 13px; font-family: 'Karla'; margin-left: 3px;">1</strong>
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bans: -->
+    <div id="window-bans">
+        <!-- Pre-selected servers -->
+        <div id="pre-selected-ban-info">
+            <table id="pre-selected-ban-info-table">
+                <tr>
+                    <td>
+                        <div class="window-info-box"><span class="window-info-header">Mineplex</span></div><br>
+                        <span class="ban-date-info"></span>
+                        <img src="https://thealtening.com/Images/ban-loading.svg" width="24px">
+                    </td>
+
+                    <td>
+                        <div class="window-info-box"><span class="window-info-header">CubeCraft</span></div><br>
+                        <span class="ban-date-info"></span>
+                        <img src="https://thealtening.com/Images/ban-loading.svg" width="24px">
+                    </td>
+                    
+                    <td>
+                        <div class="window-info-box"><span class="window-info-header">CosmicPvP</span></div><br>
+                        <span class="ban-date-info"></span>
+                        <img src="https://thealtening.com/Images/ban-loading.svg" width="24px">
+                    </td>
+                    
+                    <td>
+                        <div class="window-info-box"><span class="window-info-header">GommeHD</span></div><br>
+                        <span class="ban-date-info"></span>
+                        <img src="https://thealtening.com/Images/ban-loading.svg" width="24px">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="window-info-box"><span class="window-info-header">GrieferGames</span></div><br>
+                        <span class="ban-date-info"></span>
+                        <img src="https://thealtening.com/Images/ban-loading.svg" width="24px">
+                    </td>
+
+                    <td>
+                        <div class="window-info-box"><span class="window-info-header">SaicoPvP</span></div><br>
+                        <span class="ban-date-info"></span>
+                        <img src="https://thealtening.com/Images/ban-loading.svg" width="24px">
+                    </td>
+
+                    <td>
+                        <div class="window-info-box"><span class="window-info-header">MineSaga</span></div><br>
+                        <span class="ban-date-info"></span>
+                        <img src="https://thealtening.com/Images/ban-loading.svg" width="24px">
+                    </td>
+
+                    <td>
+                        <div class="window-info-box"><span class="window-info-header">VanityMC</span></div><br>
+                        <span class="ban-date-info"></span>
+                        <img src="https://thealtening.com/Images/ban-loading.svg" width="24px">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="window-info-box"><span class="window-info-header">MineHeroes</span></div><br>
+                        <span class="ban-date-info"></span>
+                        <img src="https://thealtening.com/Images/ban-loading.svg" width="24px">
+                    </td>
+
+                    <td>
+                        <div class="window-info-box"><span class="window-info-header">MineSuperior</span></div><br>
+                        <span class="ban-date-info"></span>
+                        <img src="https://thealtening.com/Images/ban-loading.svg" width="24px">
+                    </td>
+
+                    <td>
+                        <div class="window-info-box"><span class="window-info-header">PVPWars</span></div><br>
+                        <span class="ban-date-info"></span>
+                        <img src="https://thealtening.com/Images/ban-loading.svg" width="24px">
+                    </td>
+
+                    <td>
+                        <div class="window-info-box"><span class="window-info-header">InvadedLands</span></div><br>
+                        <span class="ban-date-info"></span>
+                        <img src="https://thealtening.com/Images/ban-loading.svg" width="24px">
+                    </td>
+                </tr>
+
+            </table>
+
+            <div id="custom-address-info">
+
+                <div>
+                    <input id="bans-search-custom-address" type="text" placeholder="Custom address" spellcheck="false" maxlength="56">
+                    <button id="bans-search-custom-address-button" type="submit" class="searchButton">
+                        <i class="fa fa-search" style="color: #3a3a3a;"></i>
+                    </button>
+                </div>
+
+                <div id="bans-search-logo" style="text-align: center;">
+                    <img src="https://thealtening.com/Images/ban-loading.svg" width="64px" style="margin-top: 10px;">
+                </div>
+
+                <div id="bans-search-loading-screen" style="text-align: center;margin-top: 20px;display: none;">
+                    <div class="loader"></div>
+                </div>
+
+                <div id="bans-search-result-screen" style="text-align: center; display: none;">
+                    <img src="https://thealtening.com/Images/ban-unbanned.svg" width="64px" style="margin-top: 5px; margin-bottom: -22px;margin-left: 0;"><br>
+                    <span id="ban-date-info-custom-text"></span><br>
+                    <span id="ban-custom-server-address" style="color: #5f5f5f;font-size: 12px;"></span><br>
+                    <span class="ban-date-info-custom" style="color: #5f5f5f;font-size: 12px;"></span><br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info: -->
+    <div id="window-info">
+    </div>
+
+    <!-- Stats: how many accounts generated today, how many accounts generated past week, past month, lifetime -->
+    <div id="window-stats">
+        <div class="window-holder-inline">
+            <span>Today:</span>
+            <span id="gen-stats-day" class="highlighted-round-text">0</span>
+        </div>
+        <div class="window-holder-inline" style="margin-left: 50px;">
+            <span>Week:</span>
+            <span id="gen-stats-week" class="highlighted-round-text">0</span>
+        </div>
+        <div class="window-holder-inline" style="margin-left: 50px;">
+            <span>Month:</span>
+            <span id="gen-stats-month" class="highlighted-round-text">0</span>
+        </div>
+        <div class="window-holder-inline" style="margin-left: 50px;">
+            <span>Lifetime:</span>
+            <span id="gen-stats-lifetime" class="highlighted-round-text">0</span>
+        </div>
+    </div>
+
+    <div id="window-history">
+        <div class="window-title">
+            <h2>History</h2>
+            <h3 id="api-reset-timer" style="display: inline-block;position: absolute;top: 26px;right: 25px; width: 130px;"></h3>
+        </div>
+        <div id="window-history-holder"></div>
+    </div>
+
+    <div style="margin-top: 10px;">
+        <div id="window-favorite">
+            <div class="window-title">
+                <h2>Favorite</h2>
+                <h3 id="favorite-holder-count" style="display: inline-block; position: absolute; top: 15px; right: 10px;">0/10 Accounts</h3>
+            </div>
+
+            <div id="favorite-holder">
+            </div>
+        </div>
+        <div id="window-private">
+            <div class="window-title">
+                <h2 style="display: inline-block;">Private</h2>
+                <h3 id="private-holder-count" style="display: inline-block; position: absolute; top: 15px; right: 10px;">0/10 Accounts</h3>
+            </div>
+
+            <div id="private-holder">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        generateReset();
+        generateInit();
+
+        var renderCaptcha = function() {
+            $('#captcha-parent').append('<div id="me-captcha" style="margin-top: 20px;" data-theme="dark"></div>')
+            grecaptcha.render('me-captcha', {
+                'sitekey' : '6LcvulQUAAAAALiRGtcfohNRfk-UQGolutRdQBFL',
+                'callback' : correctCaptcha
+            });
+        }
+        var hideCaptcha = function() {
+            $('#me-captcha').remove();
+            try {
+            grecaptcha.reset();
+            }catch(ex){}
+        }
+        var correctCaptcha = function(response) {
+            
+        };
+
+    </script>
+
+    <script>
+        var connection = new signalR.HubConnectionBuilder().withUrl('https://bans.ws.thealtening.com/connect').build();
+        connection.on('result', function(parsed) {
+
+            banQueued = false;
+            if(!parsed.result && parsed.success === false) {
+                setBanQueueState('error', parsed.error, parsed.message);
+            }else {
+                setBanQueueState('results', parsed.result);
+            }
+
+        });
+
+
+        banQueued = false;
+        
+        var hookBans = function() {
+            var queueBanCheck = function() {
+                if(banQueued) return;
+                
+                var address = $('#bans-search-custom-address').val();
+                if(address.indexOf('.') == -1 || address.indexOf('@') != -1 || address.length < 3) {
+                    alertify.delay(4000).error(`Please enter a valid server address.`);
+                    setBanQueueState('none');
+                    return;
+                } 
+                
+                banQueued = true;
+                setBanQueueState('load');
+                
+                connection.invoke('Queue', { account: { token: currentToken }, server: { domain: address } });
+            };
+
+            $('#bans-search-custom-address').keydown(function(e){
+                if(event.key == 'Enter') queueBanCheck();
+            });
+
+            $('#bans-search-custom-address-button').on('click', function(){
+                queueBanCheck();
+            });
+        }
+        
+        connection.start().then(function() {
+            hookBans();
+        });
+        connection.disconnected(function() {
+            setTimeout(function() {
+                connection.start().then(function(){hookBans();});
+            }, 5000);
+        });
+
+    </script>
+
+</div>

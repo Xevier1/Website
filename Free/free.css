@@ -1,0 +1,276 @@
+body {
+    background: url(/Images/bg-lq.png);
+    background-color: #171717;
+}
+
+a, h1, h2, h3, span {
+    font-family: karla,sans-serif;
+}
+
+a {
+    color: #91979a;
+}
+
+#header {
+
+}
+
+.g-recaptcha {
+    display: inline-block;
+}
+
+#captcha-holder {
+    text-align: center;
+    position: absolute;
+    top: 33%;
+    width: 100%;
+    font-size: 50px;
+    color: white;
+}
+#redirect-text {
+    text-shadow: 0 0 4px #232323;
+    font-size: 21px;
+}
+#captcha-overlay {
+    position: fixed; /* Sit on top of the page content */
+    /*display: none; *//* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.7); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+}
+#limit-overlay {
+  position: fixed; /* Sit on top of the page content */
+  /*display: none; *//* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7); /* Black background with opacity */
+  z-index: 3; /* Specify a stack order in case you're using a different order for other elements */
+}
+
+#main {
+    margin-top: 10vh;
+    text-align: center;
+}
+#main-container {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+#main-title h1 {
+    color: #2DB194;
+    font-size: 32px;
+    font-weight: normal;
+    margin: 5px 5px;
+}
+#main-container h2 {
+    font-size: 19px;
+    color: white;
+    font-weight: normal;
+    margin: 0 0 10px 0;
+}
+
+#footer-space {
+    position: absolute;
+    margin: auto;
+    top: 20vh;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 38%;
+    height: 9vh;
+
+    text-align: center;
+}
+
+#footer-space img {
+    text-align: center;
+    border-radius: 3px;
+
+    width: 100%;
+}
+
+.splitter {
+    margin: auto;
+    height: 1px;
+    background-color: #2db194;
+}
+
+.button-primary {
+    padding: 10px 30px;
+    border: 0;
+    border-radius: 3px;
+    color: white;
+    background-color: #2DB194;
+    font-size: 15px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 0 5px #0000007d;
+
+    margin: 5px;
+}
+.button-primary:disabled {
+    background-color: #3c3c3c;
+    color: #9e9e9e;
+    cursor: no-drop;
+}
+.button-secondary {
+    padding: 10px 30px;
+    border-radius: 3px;
+    color: white;
+    background-color: transparent;
+    font-size: 15px;
+    letter-spacing: 1px;
+    border: 1px solid #2DB194;
+    cursor: pointer;
+    box-shadow: 0 0 5px #0000007d;
+    
+    margin: 5px;
+}
+
+#faq-section {
+    margin:auto;
+    text-align: center;
+    margin-top:10vh;
+}
+
+.prices-faq-item {
+    width: 350px;
+    padding: 5px;
+    padding-left: 15px;
+    background-color: #1b1b1b;
+    box-shadow: 0 0 7px #0000004f;
+    border-left: 2px solid #2db194;
+    border-radius: 2px;
+    display: inline-block;
+    text-align: left;
+    cursor: pointer;
+    margin: 5px 10px;
+    vertical-align: top;
+  }
+
+  .prices-faq-item h2 {
+    color: white;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+
+  .prices-faq-item p {
+    color: #91979a;
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    margin-top: 5px;
+    font-family: karla,sans-serif;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .prices-faq-item a {
+    text-decoration: underline;
+    color: #2DB194;
+  }
+
+  .auth-p {
+    color: #91979a;
+    font-family: karla,sans-serif;
+    font-size: 12px;
+  }
+  .auth-p a {
+    color: #2DB194;
+    text-decoration: none;
+  }
+
+  #process-main {
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+  }
+  #process-main table {
+      width: 100%;
+  }
+  #process-main table tr td {
+        vertical-align: top;  
+        width: 50%;
+  }
+  #process-features {
+    transform: rotate(17deg);
+    margin-top: -17vh;
+    width: 125%;
+    overflow-y: hidden;
+  }
+  .process-feature {
+    width: 16.5vh;
+    height: 16.5vh;
+    background: #1b1b1b;
+    box-shadow: 1.5vh 1.5vh 3vh #000000a6;
+    display: inline-block;
+    margin: 1%;
+    background: linear-gradient(to bottom right, #1b1b1b, #151515);
+    overflow: hidden;
+    text-align: center;
+    padding: 1vh;
+    color: #3a3a3a;
+    cursor: default;
+  }
+  .process-feature:hover {
+    background: linear-gradient(to bottom right, #2d2d2d, #212121);
+    color: white;
+  }
+  .process-feature i {
+    overflow: hidden;
+    font-size: 8vh;
+    margin-top: 2vh;
+  }
+  .process-feature span {
+    font-size: 1.75vh;
+  }
+
+  #process-countdown-div {
+      color: white;
+      vertical-align: middle;
+  }
+
+  #link-container {
+    position: absolute;
+    color: white;
+    top: 40%;
+    left: 15%;
+  }
+  #link-container h2 {
+      margin: 0;
+  }
+  #link-container h3 {
+      margin: 0;
+  }
+  #link-container h3 a {
+    color: #2DB194;
+    text-decoration: none;
+  }
+
+  .window-body div a {
+      color: #2DB194;
+      text-decoration: underline;
+  }
+
+  .disc {
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+    -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+    filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+    cursor: pointer;
+  }

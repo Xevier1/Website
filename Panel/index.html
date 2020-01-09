@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard - The Altening</title>
+    <meta name="description" content="Here you can generate unlimited minecraft alts. The accounts are high-quality and checked before being generated. The generator is feature rich, including account checker, cape checker and ban checker.">
+    <meta name="theme-color" content="#2DB194"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://thealtening.com/Panel/Style/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://thealtening.com/Style/base.css" />
+    <link href="https://thealtening.com/Style/animations/animate.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700|Roboto:400,500,700" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+    
+    <script src="https://thealtening.com/Panel/Javascript/main.js"></script>
+    <script src="https://thealtening.com/Panel/Javascript/generator.js"></script>
+    <script src="https://thealtening.com/Panel/Javascript/account.js"></script>
+    <script src="https://thealtening.com/Panel/Javascript/prices.js"></script>
+    <script src="https://thealtening.com/Panel/Javascript/dashboard.js"></script>
+    <script src="https://thealtening.com/Panel/Javascript/clients.js"></script>
+    <script src="https://thealtening.com/Panel/Javascript/renew.js"></script>
+
+    <script src="https://thealtening.com/Javascript/clipboard.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js?render=explicit'></script>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://thealtening.com/Style/socialproof.css" />
+    <script src="https://thealtening.com/Javascript/socialproof.js"></script>
+    
+    <link href="https://thealtening.com/Style/alertify.css" rel="stylesheet">
+    <script src="https://thealtening.com/Javascript/alertify.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aspnet-signalr/1.1.4/signalr.js"></script>
+
+    <style>
+.pulse {
+    border-radius: 50%;
+    box-shadow: 0 0 0 rgba(45, 177, 148, 0.4);
+    animation: pulse 2s infinite;
+  }
+.pulse:hover {
+   animation: none;
+}
+  
+  @-webkit-keyframes pulse {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 rgba(45, 177, 148, 0.4);
+    }
+    70% {
+        -webkit-box-shadow: 0 0 0 6px rgba(45, 177, 148, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(45, 177, 148, 0);
+    }
+  }
+  @keyframes pulse {
+    0% {
+      -moz-box-shadow: 0 0 0 0 rgba(45, 177, 148, 0.4);
+      box-shadow: 0 0 0 0 rgba(45, 177, 148, 0.4);
+    }
+    70% {
+        -moz-box-shadow: 0 0 0 6px rgba(45, 177, 148, 0);
+        box-shadow: 0 0 0 6px rgba(45, 177, 148, 0);
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 rgba(45, 177, 148, 0);
+        box-shadow: 0 0 0 0 rgba(45, 177, 148, 0);
+    }
+  }
+  </style>
+
+    
+    <link rel="stylesheet" async href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124251250-2"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-834320227"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-124251250-2');
+        gtag('config', 'AW-834320227');
+        </script>
+
+</head>
+<body>
+    
+    <!-- Global loading -->
+    <div id="global-loading-screen">
+        <div class="loader" style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        "></div>
+    </div>
+    
+    <div id="wrapper">
+        <div id="side-panel">
+            <!-- Title/Logo -->
+            <div id="title-dispay" onclick="switch_tab('/View/Dashboard.html');" style="cursor: pointer;" >
+                <img src="https://i.imgur.com/iCi1Kki.png" width="64px" alt="minecraft alts"/><br>
+                <div id="title-holder">
+                    <span id="title-pre">The</span>
+                    <span id="title-post">Altening</span>
+                </div>
+                <div class="splitter" style="width: 100px;"></div>
+            </div>
+            
+            <!-- Navigation -->
+            <div id="nav">
+                
+                <!-- General -->
+                <div id="nav-category-main" class="nav-category">
+                    <span class="nav-category-title">
+                        General
+                    </span>
+                    <div class="nav-items">
+                        <div class="nav-item">
+                            <div name="/View/Dashboard.html" onclick="switch_tab('/View/Dashboard.html');" class="nav-item-text-holder">
+                                <i class="material-icons nav-item-text" style="margin-right: 6px;">
+                                    bookmark_border
+                                </i>
+                                <span class="nav-item-text">
+                                    Dashboard
+                                </span>
+                            </div>
+                        </div>
+                        <div class="nav-item">
+                            <div name="/View/Clients.html" onclick="switch_tab('/View/Clients.html');" class="nav-item-text-holder">
+                                <i class="material-icons nav-item-text" style="margin-right: 6px;">
+                                    toc
+                                </i>
+                                <span class="nav-item-text">
+                                    Clients
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Generator -->
+                <div class="nav-category">
+                    <span class="nav-category-title">
+                        Generator
+                    </span>
+                    <div class="nav-items">
+                        <div class="nav-item">
+                            <div name="/View/Generator.html" onclick="switch_tab('/View/Generator.html');" class="nav-item-text-holder">
+                                <i class="material-icons nav-item-text" style="margin-right: 6px;">
+                                    drag_handle
+                                </i>
+                                <span class="nav-item-text">
+                                    Generator
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-items" id="nav-left-button-renew" style="display: none;">
+                        <div class="nav-item" style="margin-top: -10px;">
+                            <div name="/View/Renew.html" onclick="switch_tab('/View/Renew.html');" class="nav-item-text-holder">
+                                <i class="material-icons nav-item-text" style="margin-right: 6px;margin-left: 32px;font-size: 19px;">refresh</i>
+                                <span class="nav-item-text" style="font-size: 13px;">Renew Token</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-items">
+                        <div class="nav-item">
+                            <div name="/View/Authenticator.html" onclick="switch_tab('/View/Authenticator.html');" class="nav-item-text-holder">
+                                <i class="material-icons nav-item-text" style="margin-right: 6px;">
+                                    get_app
+                                </i>
+                                <span class="nav-item-text">
+                                    Authenticator
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-items">
+                        <div class="nav-item">
+                            <div name="/View/Prices.html" onclick="switch_tab('/View/Prices.html');" class="nav-item-text-holder">
+                                <i class="material-icons nav-item-text" style="margin-right: 6px;">
+                                    attach_money
+                                </i>
+                                <span class="nav-item-text">
+                                    Prices
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-items">
+                        <div class="nav-item">
+                            <div name="/View/API.html" onclick="switch_tab('/View/API.html');" class="nav-item-text-holder">
+                                <i class="material-icons nav-item-text" style="margin-right: 6px;">
+                                    code
+                                </i>
+                                <span class="nav-item-text">
+                                    API
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Support -->
+                <div class="nav-category">
+                    <span class="nav-category-title">
+                        Support
+                    </span>
+
+                    <div class="nav-items">
+                        <div id="premium_discord" onclick="show_discord('premium');" class="nav-item" style="display: none;">
+                            <div class="nav-item-text-holder">
+                                <i class="material-icons nav-item-text" style="margin-right: 6px;">
+                                    supervisor_account
+                                </i>
+                                <span class="nav-item-text">
+                                    Discord Premium
+                                </span>
+                            </div>
+                        </div>
+
+                        <div id="free_discord" onclick="show_discord('free');" class="nav-item">
+                            <div class="nav-item-text-holder">
+                                <i class="material-icons nav-item-text" style="margin-right: 6px;">
+                                    supervisor_account
+                                </i>
+                                <span class="nav-item-text">
+                                    Discord Pre-Sales
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div onclick="show_faq();" class="nav-item">
+                            <div class="nav-item-text-holder">
+                                <i class="material-icons nav-item-text" style="margin-right: 6px;">
+                                    view_quilt
+                                </i>
+                                <span class="nav-item-text">
+                                    FAQ
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- Footer -->
+            <div id="footer">
+                <div id="footer-wrapper">
+                    <a href="https://thealtening.com/help/terms#termsofservice" target="_blank">Terms of service</a>
+                    <span> | </span>
+                    <a href="https://thealtening.com/help/terms#refundpolicy" target="_blank">Refund policy</a>
+                    <span> | </span>
+                    <a href="https://thealtening.com/help/terms#privacypolicy" target="_blank">Privacy policy</a>
+                </div>
+            </div>
+            
+        </div>
+        <div id="display-wrapper">
+            
+            <div id="displayed-data">
+                
+            </div>
+            
+            <!-- Loading screen -->
+            <div id="loading-screen" style="display: none;">
+                <div class="loader"></div>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        function show_discord(t) {
+            var win = window.open('https://api.thealtening.com/verification/communications?t='+t, '_blank'); 
+            win.focus();
+        }
+        function show_faq() {
+            var win = window.open('https://thealtening.com/help/', '_blank'); 
+            win.focus();
+        }
+        function open_page(page) {
+            window.location.href = page;
+        }
+        load_global();
+
+        function toggleCryptoDropdown() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+            }
+        }
+        }
+    </script>
+</body>
+</html>

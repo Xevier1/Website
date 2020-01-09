@@ -1,0 +1,98 @@
+<div class="window-container">
+    <div class="api-window">
+        <h2>API Access</h2>
+        <div class="api-description">
+            <h3>Authorization</h3>
+            <p>
+                Each account on TheAltening has an API Key which can be found on <a target="_blank" href="#account">the account page</a>.
+                Each api call has to include the token as a parameter:<br/><span class="api-highlight">?token=1234-1234-1234-1234</span>.
+            </p>
+        </div>
+
+        <div class="api-description">
+            <h3>Url</h3>
+            <p>
+                The base url for all api calls is <span class="api-highlight">api.thealtening.com/v1/</span>.
+                Combined with the endpoint <span class="api-highlight">/generate</span> it looks like <span class="api-highlight">api.thealtening.com/v1/generate</span>.
+            </p>
+        </div>
+
+        <div class="api-description">
+            <h3>Sample</h3>
+            <p>
+                A complete api call to the endpoint <span class="api-highlight">/generate</span> looks like <span class="api-highlight">api.thealtening.com/v1/generate?token=1234-1234-1234-1234</span>.
+            </p>
+        </div>
+        
+    </div>
+
+    <div class="api-window">
+        <h2><span>GET</span> Generate</h2>
+        <p class="api-url">api.thealtening.com/v1/generate[?info=true]</p>
+        <p class="api-url" style="margin-top: -10px !important;">Parameters in [ ] are optional.</p>
+
+        <div>
+<pre class="api-json-display">{
+    <span class="imp">"token"</span>: <span class="val">"example@alt.com"</span>,       <span class="comment">// Alt token.</span>
+    <span class="imp">"password"</span>: <span class="val">"anything"</span>,           <span class="comment">// Any password works, this is provided for convenience.</span>
+    <span class="imp">"username"</span>: <span class="val">"Examp**"</span>,           <span class="comment">// Alt username, but the two last characters are hidden.</span>
+    <span class="imp">"limit"</span>: <span class="val">false</span>,                    <span class="comment">// Has the daily limit been reached (*100 alts/24 hours).</span>
+    <span class="imp">"info"</span>: {                         <span class="comment">// Sent only if 'info' is set as a parameter (this object may not have any properties set).</span>
+        <span class="imp">"hypixel.lvl"</span>: <span class="val">"10"</span>,            <span class="comment">// Level of this account on hypixel.</span>
+        <span class="imp">"hypixel.rank"</span>: <span class="val">"MVP"</span>,        <span class="comment">// Rank of this account on hypixel.</span>
+        <span class="imp">"mineplex.lvl"</span>: <span class="val">"10"</span>,          <span class="comment">// Level of this account on mineplex.</span>
+        <span class="imp">"mineplex.rank"</span>: <span class="val">"LEGEND"</span>,  <span class="comment">// Rank of this account on mineplex.</span>
+        <span class="imp">"labymod.cape"</span>: <span class="val">"true"</span>,     <span class="comment">// Signifies that this account has a cape from the mod LabyMod.</span>
+        <span class="imp">"5zig.cape"</span>: <span class="val">"true"</span>          <span class="comment">// Signifies that this account has a cape from the mod 5Zig.</span>
+    } <span class="comment" style="font-size: 12px">// (Properties are only set when they have a value, e.g.: if an account doesn't have a labymod cape then 'labymod.cape' property is not present)</span>
+}</pre>
+<span>* The api has a limit of 150/250 alts per day.</span>
+        </div>
+    </div>
+
+    <div class="api-window">
+        <h2><span>GET</span> License</h2>
+        <p class="api-url">api.thealtening.com/v1/license</p>
+
+        <div>
+<pre class="api-json-display">{
+    <span class="imp">"username"</span>: <span class="val">"OnlyQubes"</span>,         <span class="comment">// Username of license.</span>
+    <span class="imp">"premium"</span>: <span class="val">true</span>,                <span class="comment">// Is a premium package purchased for this license.</span>
+    <span class="imp">"premium_name"</span>: <span class="val">"premium"</span>,   <span class="comment">// Premium package name, null if none.</span>
+    <span class="imp">"expires"</span>: <span class="val">"2019-01-01"</span>           <span class="comment">// When the premium package expires, "-1" if not premium.</span>
+}</pre>
+        </div>
+    </div>
+
+    <div class="api-window">
+        <h2>Error Codes</h2>
+        <div class="api-description api-error">
+            <h3>401 Unauthorized</h3>
+            <p>
+                Either the API Key was not provided or is invalid. To learn how to get and include your API Key in the request please refer to the Authorization section.
+            </p>
+        </div>
+
+        <div class="api-description api-error">
+            <h3>403 Forbidden</h3>
+            <p>
+                The API Key provided is not able to access the requested endpoint. E.g: free customer attempts to access /generate.
+            </p>
+        </div>
+
+        <div class="api-description api-error">
+            <h3>404 Not Found</h3>
+            <p>
+                The requested endpoint does not exist. If you get this error make sure you didn't misspell the endpoint.
+            </p>
+        </div>
+
+        <div class="api-description api-error">
+            <h3>500 Internal Server Error</h3>
+            <p>
+                Our servers encountered and unexpected error, try again later.
+            </p>
+        </div>
+        
+    </div>
+</div>

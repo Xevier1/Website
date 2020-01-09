@@ -1,0 +1,28 @@
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<div class="window-container">
+    <div id="authenticator-download-window">
+        <div style="width: 100%;">
+            <div class="client-item-header">
+                <div>
+                    <span class="client-item-header-text">Token Renewal Service</span><br>
+                    <span style="font-size: 12px;">If you have an account that has expired and you still have the token, you can possibly revive the account here. Simply insert the token into the box and if possible the token will be renewed.</span>
+                </div>
+            </div>
+
+            <div id="renew-page-container">
+                <label>Expired Token</label>
+                <input id="extend-token-input" type="text" onclick="this.select();">
+
+                <button data-sitekey="6Lde-a4UAAAAAHnON39aLsSAwktBIhBnPuh-nJJa" data-callback="doTokenExtension" class="g-recaptcha square-button" style="width: 200px; margin-top: 20px;">
+                    <div class="square-text">
+                        <label>Refresh Token</label><br>
+                        <span>Extends token by 7 days</span>
+                    </div>
+                    <div class="square-logo">
+                        <span><i class="material-icons">refresh</i></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

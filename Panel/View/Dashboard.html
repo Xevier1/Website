@@ -1,0 +1,321 @@
+<div class="window-container">
+    <div id="window-dashboard">
+        <div>
+            <div id="dashboard-global-stats">
+                <h3>Global stats</h3>
+                <div class="dashboard-stat-holder" style="font-size: 90%;">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <span>Today:</span> <span id="global-gen-stats-day" class="highlighted-round-text">0</span>
+                            </td>
+                            <td>
+                                <span>Week:</span> <span id="global-gen-stats-week" class="highlighted-round-text">0</span>
+                            </td>
+                            <td>
+                                <span>Month:</span> <span id="global-gen-stats-month" class="highlighted-round-text">0</span>
+                            </td>
+                            <td>
+                                <span>Lifetime:</span> <span id="global-gen-stats-lifetime" class="highlighted-round-text">0</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div id="dashboard-user-stats">
+                <h3>Your stats</h3>
+                <div class="dashboard-stat-holder" style="font-size: 90%;">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <span>Today:</span> <span id="me-gen-stats-day" class="highlighted-round-text">0</span>
+                            </td>
+                            <td>
+                                <span>Week:</span> <span id="me-gen-stats-week" class="highlighted-round-text">0</span>
+                            </td>
+                            <td>
+                                <span>Month:</span> <span id="me-gen-stats-month" class="highlighted-round-text">0</span>
+                            </td>
+                            <td>
+                                <span>Lifetime:</span> <span id="me-gen-stats-lifetime" class="highlighted-round-text">0</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div id="dashboard-gloabal-graph-holder">
+                <h3 style="margin-left: 40px;">Global Monthly Stats</h3>
+                <div>
+                    <canvas id="global-month-chart" width="400" height="100"></canvas>
+                </div>
+            </div>
+
+            <div id="dashboard-user-license-holder">
+                <h3>License</h3>
+                <div id="dashboard-license-holder">
+
+                    <img src="https://i.imgur.com/iCi1Kki.png" alt="free alts" width="40px"> <br>
+                    <div id="title-holder" style="font-size: 18px; margin-top: 10px;">
+                        <div><span id="title-pre">Status: </span><span id="me-license-status">Free</span></div>
+                        <div><span id="title-pre">Expires: </span><span id="account-tab-expires">Never</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div id="dashboard-gloabal-graph-holder">
+                <h3 style="margin-left: 40px;">News</h3>
+                <div style="overflow-y: auto; max-height: 300px;">
+                    <table>
+
+                        <tr>
+                            <td style="width: 64px;">2019-11-10</td>
+                            <td><h3>5,000,000 Tokens generated! 🎉</h3></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="dashboard-news-text">
+                                <p>
+                                    As of 11/10/2019 TheAltening has generated over 5,000,000 accounts for our users! This is an incredible milestone and the administration are very happy to know that users are happy with the service. This is a very nice memento and we hope to improve the service even better in the future! Some features that we plan to release very soon will be incredibly useful and our goal to make the service better has never been closer.
+                                </p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="width: 64px;">2019-08-18</td>
+                            <td><h3>TheAltening's One Year Anniversary 🎉🎉🎉</h3></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="dashboard-news-text">
+                                <p>
+                                    As of today, 2019-08-18 marks TheAltening's one year anniversary. I am extremely proud of how far this community has grown in such a short time and how far of a reach TheAltening has had on the minecraft community. This is a terrific achievement and i cannot wait for what the next few years bring!
+                                </p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="width: 64px;">2019-06-22</td>
+                            <td><h3>Ban Checker Now Released + New Partner 🎉</h3></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="dashboard-news-text">
+                                <p>
+                                    Our new ban checker feature has finally been released! We've been teasing this for a weeks now and we are glad to say we are one of the few generators who proudly boasts having ban checking capabilities for our users! Premium users will now be able to access the ban panel on the generator page and view bans that are prechecked regularly AND also the option of having custom server ban checking! This is a great achievement and i hope you all enjoy.
+                                    <br/>
+                                    Additionally, TheAltening now has a new partnered client called Moon which you can find more information about in the Clients tab on the dashboard.
+                                </p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="width: 64px;">2019-05-26</td>
+                            <td><h3>2,000,000 Tokens generated! 🎉</h3></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="dashboard-news-text">
+                                <p>
+                                    As of 2019-05-26 TheAltening has generated over 2,000,000 accounts for our users! This is an incredible milestone and the administration are very happy to know that users are happy with the service. This is a very nice memento and we hope to improve the service even better in the future!
+                                </p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="width: 64px;">2019-04-02</td>
+                            <td><h3>TheAltening's new Discord Bot is live!</h3></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="dashboard-news-text">
+                                <p>
+                                    We now have a discord bot where you will be able to automatically generate tokens via our API and launch your minecraft - ALL via discord!<br>
+                                    This is a very exciting and convenient feature and i hope you will be satisfied with it <br>
+                                    Please go to your  <a href="https://panel.thealtening.com/#account">accounts page</a> to set it up and begin!
+                                </p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="width: 64px;">2019-03-30</td>
+                            <td><h3>AltLoader has been released!</h3></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="dashboard-news-text">
+                                <p>
+                                        Our newest feature to TheAltening has now officially been released and all users with a plan can now access it! <br/>
+                                        This new feature will automatically log you into your token and start your minecraft, and we've dubbed it "Quick Launch" <br/>
+                                        The feature is available in the "Generator" Page, keep in mind you will need to re-download your authenticator to take advantage of this new feature! <br/>
+                                        Please report any bugs you may find while using it
+                                </p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="width: 64px;">2019-02-05</td>
+                            <td><h3>1,000,000 Tokens generated! 🎉</h3></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="dashboard-news-text">
+                                <p>
+                                    It is official that since our launch date, we've generated right now just a little over 1,000,000 tokens and that is an incredible milestone for TheAltening!<br/>
+                                    To celebrate this great achievement we've activated a sale for 20% off which you can use on any plan. To take advantage of this sale, simply enter code MILLION at checkout. Existing users can also take advantage of this sale by extending their plan at the prices page! Thank you for all the support and we hope to improve TheAltening even more in the future.
+                                </p>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td style="width: 64px;">2018-12-23</td>
+                            <td><h3>500,000 Tokens Generated! 🎉</h3></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="dashboard-news-text">
+                                <p>
+                                        Merry christmas and happy new year, we hope you all had a good holiday season and that 2019 is even better! ✨🎄 ✨<br/>
+                                        Recently our lifetime tokens generated surpassed 500,000<br/>
+                                        Thank you for your support, we look forward to making TheAltening better!
+                                </p>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td style="width: 64px;">2018-12-15</td>
+                            <td><h3>Account Stats!</h3></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="dashboard-news-text">
+                                <p>
+                                        This update we've added a very requested feature to TheAltening and we hope everybody will be pleased with this, henceforth we'll be looking into improving TheAltening and potentally adding more supported servers. 🎉🎉🎉<br/>
+You are now able to check if your generated account has any ranks, or check their level on servers like Mineplex and Hypixel. Once an account is generated on the website, if it has anything you will see a marker on the right hand side next to the text that says 'Info' if you click this button, it will display what servers it has stats for and what they are. 👀
+                                        </p>
+                                </p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="width: 64px;">2018-11-26</td>
+                            <td><h3>November Updates!</h3></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="dashboard-news-text">
+                                <p>
+                                        Our last announcement was posted on October 7th and since then, we've added loads of new goodies for our users to take advantage! 👌<br/>
+                                        Here are some of the things we added that you might be interested in:<br/>
+                                        <p style="margin-left: 16px; font-size: 13px;">
+                                        - Public <a target="_blank" href="https://github.com/TheAltening">GitHub API</a> for developers<br/>
+                                        - TheAltening Integration with <a target="_blank" href="https://minesense.pub/">Exhibition client</a><br/>
+                                        - TheAltening Integration with <a target="_blank" href="https://liquidbounce.net/">LiquidBounce client</a><br/>
+                                        </p>
+                                </p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="width: 64px;">2018-10-07</td>
+                            <td><h3>Starter Plan and Backend Upgrades!</h3></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="dashboard-news-text">
+                                <p>
+                                    We are introducing a new plan called Starter. It is aimed towards non minebot users. It has a limited amount of alts per day and
+                                    does not have API access, however it is a lot cheaper 👏<br/>
+                                    <span style="font-size: 12px">(this plan does not work with MineBot)</span>
+                                </p>
+                            </td>
+                        </tr>  
+
+                        <tr>
+                            <td style="width: 64px;">2018-09-20</td>
+                            <td><h3>100,000 Tokens Generated! 🎉</h3></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="dashboard-news-text">
+                                <p>
+                                    We've recently hit 100,000 generated accounts, this is a great milestone and we are glad everyone is enjoying the generator. Well be working on 
+                                    continued updates and improvements on the altening.
+                                </p>
+                            </td>
+                        </tr>  
+
+                        <tr>
+                            <td style="width: 64px;">2018-08-27</td>
+                            <td><h3>API Limits Increased!</h3></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="dashboard-news-text">
+                                <p>
+                                    Good news everybody, the API generation limit has been increased! This will allow applications that use the API to generate more alts. The website generation is unaffected and will still allow you to generate unlimited accounts 😘<br/>
+                                    <span style="font-size: 12px;">Basic increased to 150 Tokens, Premium increased to 250 Tokens.</span>
+                                </p>
+                            </td>
+                        </tr>  
+
+                        <tr>
+                            <td style="width: 64px;">2018-08-23</td>
+                            <td><h3>Crypto Currency!</h3></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="dashboard-news-text">
+                                <p>
+                                    You can now purchase a license for The Altening with CryptoCurrency! Currently we accept Bitcoin (BTC), Bitcoin Cash (BCH) and Ethereum (ETH) ⚡<br/>
+                                    <span style="font-size: 12px;">BTC Transactions wait for 2 Confirmations, BCH For 3 Confirmations, ETH For 3 Confirmations.</span>
+
+                                </p>
+                            </td>
+                        </tr>  
+
+                        <tr>
+                            <td>2018-08-18</td>
+                            <td><h3>Release!</h3></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="dashboard-news-text">
+                                <p>
+                                    Finally, the release day is upon us. Hope everybody is going to enjoy this new service 🤤<br/>
+                                </p>
+                            </td>
+                        </tr>  
+
+                        <tr>
+                            <td>2018-07-15</td>
+                            <td><h3>Beta testing!</h3></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="dashboard-news-text">
+                                <p>
+                                    Private beta is now live! Be sure to report any bugs that you find to our support discord.
+                                </p>
+                            </td>
+                        </tr>  
+                    </table>
+                </div>
+            </div>
+
+            <div id="dashboard-user-license-holder" style="background: none; box-shadow: none;"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    setDashboardData();
+    dashboardInit();
+</script>

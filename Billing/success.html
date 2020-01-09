@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Thank You - The Altening</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://thealtening.com/Panel/Style/login.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://thealtening.com/Style/base.css" />
+    <link href="https://thealtening.com/Style/animations/animate.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://thealtening.com/Panel/Javascript/email.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Ads: 834320227 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-834320227"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-834320227');
+    </script>
+    
+    <link href="https://thealtening.com/Style/alertify.css" rel="stylesheet">
+    <style>
+        #loading-screen {
+        position: absolute;
+
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        }
+
+        .loader {
+            border: 2px solid #151c21;
+            border-radius: 50%;
+            border-top: 2px solid #2DB194;
+            width: 30px;
+            height: 30px;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+            display: inline-block;
+
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        @-webkit-keyframes spin {  /* Safari */
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #auth-form a {
+            color: #2db194;
+            text-decoration: underline;
+        }
+  </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="main-window" style="height: 400px;">
+
+            <!-- Title/Logo -->
+            <div id="title-dispay">
+                <img src="https://i.imgur.com/iCi1Kki.png" width="64px" alt="minecraft alts"/><br>
+                <div id="title-holder">
+                    <span id="title-pre">The</span>
+                    <span id="title-post">Altening</span>
+                </div>
+                <div class="splitter" style="width: 100px;"></div>
+            </div>
+
+            <!-- Loading screen -->
+            <div id="loading-screen">
+                <div class="loader"></div>
+            </div>
+
+            <!-- Form body -->
+            <div id="auth-form">
+                <div id="p-success" style="display: none;">
+                    <span style="font-size: 14px; color: #fff;">
+                        Thank you for purchasing a license for <span style="color: #2db194;">The Altening</span>! Your license should activate shortly. Click <a href="https://panel.thealtening.com/">here</a> to go to the dashboard.
+                    </span><br>
+                    <span style="font-size: 12px;">
+                        (if your license is not activated in 10 minutes please contact support)
+                    </span>
+                </div>
+
+                <div id="p-error" style="display: none;">
+                    <span style="font-size: 14px; color: #fff;">
+                        An error has occured while processing purchase! No money should have been taken from your PayPal account. To try again click <a href="https://panel.thealtening.com/#prices">here</a>.
+                    </span><br>
+                    <span style="font-size: 12px;">
+                        (if this error is persistant please contact support)
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://thealtening.com/Javascript/alertify.js"></script>
+    <script>
+
+        exec();
+        function exec() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                try {
+                    if (this.readyState == 4) {
+                        document.getElementById('loading-screen').style.display = 'none';
+                        if(this.status == 200) document.getElementById('p-success').style.display = '';
+                        else document.getElementById('p-error').style.display = '';
+                    }
+                }catch(ex) {
+                    document.getElementById('p-error').style.display = '';
+                }
+            };
+            xhttp.withCredentials = true;
+            xhttp.open("GET", "https://api.thealtening.com/billing/exec?" + decodeURIComponent(window.location.search.substring(1)), true);
+            xhttp.send();
+        }
+
+    </script>
+</body>
+</html>

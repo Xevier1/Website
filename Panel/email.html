@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Confirm Email - The Altening</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://thealtening.com/Panel/Style/login.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://thealtening.com/Style/base.css" />
+    <link href="https://thealtening.com/Style/animations/animate.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://thealtening.com/Panel/Javascript/email.js"></script>
+    
+    <link href="https://thealtening.com/Style/alertify.css" rel="stylesheet">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="main-window" style="height: 400px;">
+
+            <!-- Title/Logo -->
+            <div id="title-dispay">
+                <img src="https://i.imgur.com/iCi1Kki.png" width="64px" alt="minecraft alts"/><br>
+                <div id="title-holder">
+                    <span id="title-pre">The</span>
+                    <span id="title-post">Altening</span>
+                </div>
+                <div class="splitter" style="width: 100px;"></div>
+            </div>
+
+            <!-- Form body -->
+            <div id="auth-form">
+                <span style="font-size: 14px; color: #fff;">
+                    We have sent an email to
+                    <span id="email_data" style="color: #2db194;">your email address</span>
+                    to confirm that you own it. Please follow the instructions that we have sent to your inbox to confirm.
+                </span><br>
+                <span style="font-size: 12px;">
+                    If you have not received the email click the "re-send email" button and give it up to 5 minutes to receive the email. It
+                    can also be in the Spam category.
+                </span>
+                <button onclick="doResendEmail();" style="margin-top: 20px;" class="square-button">RE-SEND EMAIL</button>
+                <span style="font-size: 11px; text-decoration: underline; cursor: pointer;" onclick="logout();">Don't own that email? Log out</span>
+            </div>
+        </div>
+    </div>
+    <script src="https://thealtening.com/Javascript/alertify.js"></script>
+    <script>
+
+        var getUrlParameter = function(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+
+        function logout() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                    window.location.href = "/";
+                }
+            };
+            xhttp.withCredentials = true;
+            xhttp.open("GET", "https://api.thealtening.com/me/logout", true);
+            xhttp.send();
+        }
+        
+        var email = getUrlParameter('email');
+        $('#email_data').text(`"${email}"`);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: #171717;
+    margin: 0;
+    padding: 0;
+}
+
+label, span, span, h1, h2, h3, a {
+    font-family: 'Karla', sans-serif;
+    color: #91979a;
+}
+li {
+    font-family:'Roboto',sans-serif;
+    color: #91979a;
+}
+
+i {
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #91979a;
+}
+
+h1, h2, h3 {
+    color: #fff;
+    margin: 0;
+}
+h3 {
+    font-size: 14px;
+    padding-left: 4px;
+}
+
+.splitter {
+    width: 10%;
+    margin: auto;
+    height: 1px;
+    background-color: #2DB194;
+}
+
+/* Button: round */
+.round-button {
+    background-color: #2DB194;
+    
+    border-radius: 30px;
+    border: 0;
+    outline: none;
+
+    padding: 14px 30px 14px 20px;
+    text-align: left;
+    
+    cursor: pointer;
+
+    transition: 0.15s linear 0.15s;
+}
+.round-button label {
+    font-weight: 700;
+    color: #fff;
+}
+.round-button span {
+    font-size: 11px;
+    color: #fff;
+}
+.round-button .button-text {
+    float: left;
+}
+.round-button .button-logo {
+    margin-left: 20px;
+    text-align: right;
+    float: right;
+    vertical-align: middle;
+    height: 100%
+}
+
+.round-button:hover {
+    background-color: rgb(33, 167, 138);
+}

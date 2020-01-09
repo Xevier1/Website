@@ -1,0 +1,153 @@
+<div class="window-container">
+
+    <div style="float: right;">
+        <a href="#" onclick="logout();">Logout</a>
+    </div>
+
+    <div id="window-account-page" style="margin-top: 50px;">
+        <div id="window-profile-information">
+            <div class="window-title">
+                <h2>Account</h2>
+            </div>
+
+            <div style="padding: 20px;">
+                <table>
+                    <tr>
+                        <td style="width: 60%;"><label>Username</label><br/><input id="account-tab-name" type="text" readonly onclick="this.select();"></td>
+                        <td><label>Registration date</label><br/><input type="text" id="account-tab-register" readonly onclick="this.select();"></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 60%;"><label>Email</label><br/><input type="text" id="account-tab-email" readonly onclick="this.select();"></td>
+                        <td><label>Confirmed</label><br/><input type="text" id="account-tab-email-validated" readonly onclick="this.select();"></td>
+                    </tr>
+
+                    <tr><td></td></tr>
+
+                    <tr>
+                        <td colspan="2" style="width: 100%;">
+                            <label>API Key</label><br/>
+                            <label style="font-size: 12px;">This token is used to authenticate on the Authenticator application. Do not share this with anybody, if you feel that somebody has access to your API Key then click the Generate button, this will generate a new token and will invalidate any previous ones.
+                            </label><br/>
+
+                            <input type="text" id="account-tab-api-token" style="width: calc(100% - 100px - 16px - 4px);" readonly onclick="this.select();" value="api-423-8v8r-br6l">
+                            <button style="height: 36px; width: 100px;" class="copy-button" id="account-refresh-token-button" onclick="doAccountChangeApiKey();">Generate</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="window-password-manager">
+            <div class="window-title">
+                <h2 style="display: inline-block;">Password</h2>
+            </div>
+
+            <div style="padding: 20px;">
+                <table>
+                    <tr>
+                        <td style="width: 100%; padding-bottom: 15px;"><label>Current Password</label><br/><input id="account-tab-current-password" type="password" onclick="this.select();" value=""></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 100%; padding-bottom: 5px;"><label>New Password</label><br/><input id="account-tab-new-password" type="password" onclick="this.select();" value=""></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 100%;"><label>New Password Repeated</label><br/><input id="account-tab-new-password-repeat" type="password" onclick="this.select();" value=""></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 100%;">
+                            <button onclick="doAccountChangePassword();" class="square-button" style="width: 200px; margin-top: 20px;">
+                                <div class="square-text">
+                                    <label>Change Password</label><br>
+                                    <span>Updates user setting</span>
+                                </div>
+                                <div class="square-logo">
+                                    <span><i class="material-icons">priority_high</i></span>
+                                </div>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div id="window-subscription-manager">
+            <div class="window-title">
+                <h2 style="display: inline-block;">Subscription</h2>
+            </div>
+
+            <div style="padding: 20px;">
+                <table>
+                    <tr>
+                        <td style="width: 60%;"><label>Current Plan</label><br/><input type="text" id="account-tab-license" readonly onclick="this.select();"></td>
+                        <td><label>Expires</label><br/><input type="text" id="account-tab-expires" readonly onclick="this.select();"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="button-basic" onclick="switch_tab('/View/Prices.html');" style="width: 40%; min-width: 116px;">PLANS</button>
+                            <button class="button-basic" onclick="if(confirm('Are you sure you want to cancel your subscription?')) cancelSubscription();"  style="width: 25%; min-width: 88px; background-color: #313131;">Cancel</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div id="window-discord-manager">
+            <div class="window-title">
+                <h2 style="display: inline-block;">Discord Bot</h2>
+            </div>
+            <div style="padding: 20px;">
+                <table>
+                    <tr><td style="width: 100%;"><label>Discord User Id <a href="https://streamable.com/iwjsy" target="_blank" style="font-size: 12px;">(Don't know how to get your id? Click here)</a></label><br><input type="text" id="discord-id" onclick="this.select();"></td></tr>
+                    <tr><td style="padding-bottom: 0;"><span style="font-size: 14px;">Please make sure your discord ID is correct, as you will only be able to change it ONCE every 24 hours.</span></td></tr>
+                    <tr>
+                        <td>
+                            <button onclick="setDiscordData();" class="square-button" style="width: 150px;/* margin-top: 20px; */">
+                                <div class="square-text">
+                                    <label>Save</label><br>
+                                    <span>Set discord id</span>
+                                </div>
+                                <div class="square-logo">
+                                    <span><i class="material-icons">done</i></span>
+                                </div>
+                            </button>
+                            <a href="https://discordapp.com/oauth2/authorize?client_id=562386188988710942&scope=bot" target="_blank"><button class="square-button" style="width: 150px;/* margin-top: 20px; */background-color: #313131;margin-left: 10px;">
+                                <div class="square-text">
+                                    <label>Add Bot</label><br>
+                                    <span>Get bot invite</span>
+                                </div>
+                                <div class="square-logo">
+                                    <span><i class="material-icons">add</i></span>
+                                </div>
+                            </button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-bottom: 0;font-size: 12px;">
+                            <div>
+                                <i class="material-icons" style="
+                                    font-size: 12px;
+                                    vertical-align: middle;
+                                    margin-right: 4px;
+                                    color: #4e4e4e;
+                                ">
+                                video_library
+                                </i><span><a href="https://youtu.be/26gphzPguVY" target="_blank">Click Here To Watch A Tutorial On The Discord Bot</a></span> <br>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $('#account-tab-name').val(name);
+    $('#account-tab-register').val(reg_date.substring(0,10));
+    $('#account-tab-email').val(email);
+    $('#account-tab-email-validated').val(email_confirmed ? 'true' : 'false');
+    $('#account-tab-api-token').val(apikey);
+    $('#account-tab-license').val(ban?"BANNED":(license_state?license:'Free'));
+    $('#discord-id').val(discord_id);
+    if(expires) $('#account-tab-expires').val(ban?"":(license_state?expires.substring(0, 10):''));
+</script>
